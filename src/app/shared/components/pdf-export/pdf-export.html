@@ -1,0 +1,46 @@
+<div class="modal-backdrop" (click)="onBackdropClick($event)" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+  <div class="modal">
+
+    <button class="modal__close" (click)="print.close()" aria-label="Fermer">✕</button>
+
+    <div class="modal__icon">⬇</div>
+    <h2 class="modal__title" id="modal-title">Exporter le CV</h2>
+    <p class="modal__sub">Version PDF · Lead Tech Fullstack</p>
+
+    <div class="modal__preview">
+      <div class="preview__header">
+        <div class="preview__name">Yoann Aubry</div>
+        <div class="preview__title">Lead Tech Fullstack · Référent Agile</div>
+        <div class="preview__contact">yo.aubry&#64;gmail.com · Fontaine (38) · LinkedIn</div>
+      </div>
+      <div class="preview__sections">
+        <div class="preview__line preview__line--title"></div>
+        <div class="preview__line"></div>
+        <div class="preview__line preview__line--short"></div>
+        <div class="preview__line preview__line--title"></div>
+        <div class="preview__line"></div>
+        <div class="preview__line preview__line--short"></div>
+      </div>
+    </div>
+
+    <ul class="modal__includes">
+      <li>✓ Expérience complète (toutes les missions)</li>
+      <li>✓ Compétences techniques</li>
+      <li>✓ Formation & centres d'intérêt</li>
+      <li>✗ Easter eggs & mini-jeux 🥚🎮</li>
+    </ul>
+
+    <div class="modal__actions">
+      <button class="modal__btn modal__btn--primary" (click)="print.print()">
+        ⬇ Télécharger PDF
+      </button>
+      <button class="modal__btn modal__btn--secondary" (click)="print.close()">
+        Annuler
+      </button>
+    </div>
+
+    <p class="modal__hint">
+      Le navigateur ouvre la boîte d'impression — choisir <strong>Enregistrer en PDF</strong>.
+    </p>
+  </div>
+</div>

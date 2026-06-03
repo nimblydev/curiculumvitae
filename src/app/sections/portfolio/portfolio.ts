@@ -5,6 +5,8 @@ import { SkillsComponent } from '../skills/skills';
 import { EducationComponent } from '../education/education';
 import { InterestsComponent } from '../interests/interests';
 import { EasterEggService } from '../../core/services/easter-egg.service';
+import { PrintService } from '../../core/services/print.service';
+import { PdfExportComponent } from '../../shared/components/pdf-export/pdf-export';
 
 @Component({
   selector: 'app-portfolio',
@@ -14,6 +16,7 @@ import { EasterEggService } from '../../core/services/easter-egg.service';
     SkillsComponent,
     EducationComponent,
     InterestsComponent,
+    PdfExportComponent,
   ],
   templateUrl: './portfolio.html',
   styleUrl: './portfolio.scss',
@@ -21,4 +24,5 @@ import { EasterEggService } from '../../core/services/easter-egg.service';
 export class PortfolioComponent {
   readonly activeEgg = inject(EasterEggService).activeEgg;
   readonly eggs = inject(EasterEggService);
+  readonly print = inject(PrintService);
 }

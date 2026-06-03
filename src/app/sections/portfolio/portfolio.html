@@ -18,6 +18,10 @@
     </div>
   }
 
+  @if (print.isOpen()) {
+    <app-pdf-export />
+  }
+
   <app-hero />
   <app-experience />
   <app-skills />

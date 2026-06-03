@@ -51,6 +51,21 @@
     }
   }
 
+  &-pdf {
+    padding: 6px 14px;
+    background: transparent;
+    color: var(--text-muted);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    font-family: var(--font-body);
+    transition: border-color 0.2s, color 0.2s, background 0.2s;
+
+    &:hover { border-color: var(--primary); color: var(--primary); background: var(--bg-elevated); }
+  }
+
   &-game {
     padding: 6px 14px;
     background: var(--primary);

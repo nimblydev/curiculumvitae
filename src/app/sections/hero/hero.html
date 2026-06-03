@@ -8,6 +8,7 @@
       <a href="#interests">Intérêts</a>
       <a [routerLink]="['/games', 'snake']" class="hero__nav-game">🎮 Snake</a>
     </div>
+    <button class="hero__nav-pdf" (click)="print.open()" title="Exporter en PDF">⬇ PDF</button>
     <app-theme-switcher />
   </nav>
 

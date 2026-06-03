@@ -143,3 +143,163 @@ body {
 ::-webkit-scrollbar-track { background: var(--bg); }
 ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
 ::-webkit-scrollbar-thumb:hover { background: var(--primary); }
+
+/* =====================================================
+   PRINT / PDF EXPORT
+   ===================================================== */
+
+@media print {
+  /* Force thème light propre */
+  :root {
+    --bg: #fff !important;
+    --bg-surface: #fff !important;
+    --bg-elevated: #f5f5f5 !important;
+    --text: #111 !important;
+    --text-muted: #555 !important;
+    --primary: #1a365d !important;
+    --primary-dark: #1a365d !important;
+    --accent: #1a365d !important;
+    --border: #ddd !important;
+    --shadow: none !important;
+    --font-heading: 'Georgia', 'Times New Roman', serif !important;
+    --font-body: 'Arial', sans-serif !important;
+    --font-mono: 'Courier New', monospace !important;
+  }
+
+  * { cursor: auto !important; box-shadow: none !important; }
+
+  body { background: #fff; color: #111; font-size: 11pt; }
+
+  /* ---- Masquer les éléments non-CV ---- */
+  .hero__nav,
+  .hero__scroll-hint,
+  .hero__avatar,
+  .hero__egg-banner,
+  .hero__nav-game,
+  .portfolio__footer,
+  .egg-toast,
+  .egg-idle,
+  .modal-backdrop,
+  app-steampunk-cursor,
+  app-theme-switcher,
+  .interest-card__hint,
+  .timeline__toggle { display: none !important; }
+
+  /* ---- Hero : header compact ---- */
+  .hero {
+    min-height: auto !important;
+    padding: 0 !important;
+
+    &::before { display: none !important; }
+  }
+
+  .hero__content {
+    padding: 0 !important;
+    text-align: left !important;
+    align-items: flex-start !important;
+  }
+
+  .hero__name {
+    font-size: 22pt !important;
+    -webkit-text-fill-color: #111 !important;
+    background: none !important;
+    color: #111 !important;
+  }
+
+  .hero__title  { font-size: 13pt !important; color: #333 !important; }
+  .hero__subtitle { font-size: 10pt !important; }
+  .hero__pitch { font-size: 10pt !important; max-width: 100% !important; }
+
+  .hero__contact { justify-content: flex-start !important; gap: 8px !important; }
+  .hero__contact-item {
+    border: none !important;
+    padding: 0 !important;
+    background: none !important;
+    font-size: 9pt !important;
+
+    &::after { content: ' · '; color: #999; }
+    &:last-child::after { content: ''; }
+  }
+
+  /* ---- Sections ---- */
+  .section {
+    padding: 16px 0 !important;
+
+    &--alt { background: #fff !important; }
+  }
+
+  .section__title {
+    font-size: 13pt !important;
+    border-bottom: 1.5pt solid #111;
+    padding-bottom: 4px;
+    margin-bottom: 12px !important;
+
+    &::after { display: none !important; }
+    &::before { display: none !important; }
+  }
+
+  /* ---- Timeline / Expérience ---- */
+  .timeline { padding-left: 0 !important; }
+  .timeline::before,
+  .timeline__dot { display: none !important; }
+
+  .timeline__card {
+    border: none !important;
+    padding: 0 0 12px !important;
+    border-bottom: 0.5pt solid #ddd !important;
+    border-radius: 0 !important;
+  }
+
+  .timeline__item:last-child .timeline__card { border-bottom: none !important; }
+
+  /* Force l'affichage des highlights même non-expanded */
+  .timeline__highlights { display: flex !important; margin: 6px 0 !important; }
+  .timeline__highlights li { font-size: 9.5pt !important; }
+
+  .timeline__role { font-size: 11pt !important; }
+  .timeline__company { font-size: 10pt !important; }
+  .timeline__period, .timeline__location { font-size: 9pt !important; }
+
+  .timeline__tags { margin-top: 4px !important; gap: 4px !important; }
+  .tag {
+    font-size: 8pt !important;
+    padding: 1px 6px !important;
+    border: 0.5pt solid #aaa !important;
+    background: none !important;
+    color: #333 !important;
+  }
+
+  /* ---- Skills ---- */
+  .skills-grid { grid-template-columns: repeat(3, 1fr) !important; gap: 8px !important; }
+  .skill-group { border: 0.5pt solid #ddd !important; padding: 8px !important; border-radius: 4px !important; }
+  .skill-group__name { font-size: 9pt !important; }
+  .skill-tag {
+    font-size: 8pt !important;
+    padding: 2px 6px !important;
+    background: #f0f0f0 !important;
+    color: #333 !important;
+  }
+
+  /* ---- Education ---- */
+  .edu-card { border: none !important; padding: 4px 0 !important; border-radius: 0 !important; }
+  .edu-card__degree { font-size: 10pt !important; }
+  .edu-card__institution { font-size: 9pt !important; }
+  .edu-card__year { font-size: 9pt !important; }
+
+  /* ---- Interests ---- */
+  .interests-grid { grid-template-columns: repeat(3, 1fr) !important; gap: 8px !important; }
+  .interest-card { border: 0.5pt solid #ddd !important; padding: 10px !important; border-radius: 4px !important; }
+  .interest-card__icon { font-size: 20px !important; }
+  .interest-card__label { font-size: 9pt !important; }
+  .interest-card__desc { font-size: 8pt !important; }
+
+  /* ---- Sauts de page ---- */
+  #skills { page-break-before: always; }
+  .timeline__item { page-break-inside: avoid; }
+
+  /* ---- Marges d'impression ---- */
+  @page {
+    margin: 15mm 12mm;
+    size: A4 portrait;
+  }
+}
