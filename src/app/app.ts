@@ -1,16 +1,24 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, computed, inject, OnInit } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { EasterEggService } from './core/services/easter-egg.service';
 import { ThemeService } from './core/services/theme.service';
+import { SteampunkCursorComponent } from './shared/components/steampunk-cursor/steampunk-cursor';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet],
-  template: `<router-outlet />`,
+  imports: [RouterOutlet, SteampunkCursorComponent],
+  template: `
+    <router-outlet />
+    @if (isSteampunk()) {
+      <app-steampunk-cursor />
+    }
+  `,
 })
 export class App implements OnInit {
   private readonly easterEggs = inject(EasterEggService);
-  readonly theme = inject(ThemeService);
+  private readonly themeService = inject(ThemeService);
+
+  readonly isSteampunk = computed(() => this.themeService.theme() === 'steampunk');
 
   ngOnInit(): void {
     this.easterEggs.init();

@@ -117,6 +117,8 @@ body {
    STEAMPUNK EXTRAS
    ===================================================== */
 
+:root[data-theme="steampunk"] * { cursor: none !important; }
+
 :root[data-theme="steampunk"] {
   .section__title::before {
     content: '⚙ ';
