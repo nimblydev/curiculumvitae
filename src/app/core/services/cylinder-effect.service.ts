@@ -1,8 +1,8 @@
 import { Injectable, inject, effect } from '@angular/core';
 import { ThemeService } from './theme.service';
 
-const MAX_ROT_X = 6;   // degrés horizontal
-const MAX_ROT_Y = 2.5; // degrés vertical
+const MAX_ROT_X = 4;   // degrés horizontal
+const MAX_ROT_Y = 1.5; // degrés vertical
 const EASE = 0.055;    // lerp coefficient — plus bas = plus fluide
 
 @Injectable({ providedIn: 'root' })
@@ -79,8 +79,11 @@ export class CylinderEffectService {
     const root = document.documentElement;
     root.style.setProperty('--cyl-x', `${this.curX.toFixed(3)}deg`);
     root.style.setProperty('--cyl-y', `${this.curY.toFixed(3)}deg`);
-    // Parallax en px — différents multiplicateurs dans le CSS
     root.style.setProperty('--para-x', `${(this.curX / MAX_ROT_X * 24).toFixed(2)}px`);
     root.style.setProperty('--para-y', `${(this.curY / MAX_ROT_Y * 10).toFixed(2)}px`);
+    // Pivot toujours au centre du viewport visible — évite le déplacement excessif en bas de page
+    const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
+    const scrollRatio = maxScroll > 0 ? window.scrollY / maxScroll : 0;
+    root.style.setProperty('--cyl-origin-y', `${(scrollRatio * 100).toFixed(1)}%`);
   }
 }
