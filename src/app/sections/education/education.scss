@@ -1,0 +1,41 @@
+.edu-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.edu-card {
+  display: flex;
+  gap: 24px;
+  align-items: flex-start;
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 20px;
+  transition: border-color 0.2s;
+
+  &:hover { border-color: var(--primary); }
+
+  &__year {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--primary);
+    font-family: var(--font-mono);
+    min-width: 42px;
+    padding-top: 2px;
+  }
+
+  &__degree {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--text);
+    margin: 0 0 4px;
+    font-family: var(--font-heading);
+  }
+
+  &__institution {
+    font-size: 14px;
+    color: var(--text-muted);
+    margin: 0;
+  }
+}

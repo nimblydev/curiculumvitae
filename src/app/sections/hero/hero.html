@@ -1,0 +1,52 @@
+<header class="hero">
+  <nav class="hero__nav">
+    <span class="hero__nav-name">YA</span>
+    <div class="hero__nav-links">
+      <a href="#experience">Expérience</a>
+      <a href="#skills">Compétences</a>
+      <a href="#education">Formation</a>
+      <a href="#interests">Intérêts</a>
+      <a [routerLink]="['/games', 'snake']" class="hero__nav-game">🎮 Snake</a>
+    </div>
+    <app-theme-switcher />
+  </nav>
+
+  <div class="hero__content">
+    @if (activeEgg() === 'konami') {
+      <div class="hero__egg-banner">
+        ↑↑↓↓←→←→BA — Mode Steampunk activé ! ⚙️
+      </div>
+    }
+
+    <div class="hero__avatar" (click)="onNameClick()" title="Essaie de cliquer...">
+      <span class="hero__initials">YA</span>
+    </div>
+
+    <h1 class="hero__name">{{ cv.name }}</h1>
+    <p class="hero__title">{{ cv.title }}</p>
+    <p class="hero__subtitle">{{ cv.subtitle }}</p>
+
+    <p class="hero__pitch">{{ cv.pitch }}</p>
+
+    <div class="hero__contact">
+      <a [href]="'tel:' + cv.contact.phone" class="hero__contact-item">
+        <span class="hero__contact-icon">☎</span>
+        {{ cv.contact.phone }}
+      </a>
+      <a [href]="'mailto:' + cv.contact.email" class="hero__contact-item">
+        <span class="hero__contact-icon">✉</span>
+        {{ cv.contact.email }}
+      </a>
+      <span class="hero__contact-item">
+        <span class="hero__contact-icon">◎</span>
+        {{ cv.contact.location }}
+      </span>
+      <a [href]="cv.contact.linkedin" target="_blank" rel="noopener" class="hero__contact-item">
+        <span class="hero__contact-icon">in</span>
+        LinkedIn
+      </a>
+    </div>
+  </div>
+
+  <div class="hero__scroll-hint">↓</div>
+</header>

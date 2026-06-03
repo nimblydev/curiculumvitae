@@ -1,0 +1,40 @@
+<div class="snake">
+  <header class="snake__header">
+    <a [routerLink]="['/']" class="snake__back">← Retour au CV</a>
+    <div class="snake__scores">
+      <span class="snake__score">Score : <strong>{{ score() }}</strong></span>
+      <span class="snake__best">Best : <strong>{{ best() }}</strong></span>
+    </div>
+  </header>
+
+  <div class="snake__viewport">
+    <canvas #canvas class="snake__canvas"></canvas>
+
+    @if (state() === 'idle') {
+      <div class="snake__overlay">
+        <h1 class="snake__title">🐍 Snake 3D</h1>
+        <p class="snake__hint">Thème Steampunk · Serpent en cuivre</p>
+        <button class="snake__btn" (click)="start()">Jouer</button>
+        <p class="snake__controls">↑ ↓ ← → ou WASD</p>
+      </div>
+    }
+
+    @if (state() === 'over') {
+      <div class="snake__overlay snake__overlay--over">
+        <h2 class="snake__over-title">Game Over</h2>
+        <p class="snake__over-score">Score : <strong>{{ score() }}</strong></p>
+        @if (score() === best() && score() > 0) {
+          <p class="snake__over-best">🏆 Nouveau record !</p>
+        }
+        <button class="snake__btn" (click)="restart()">Rejouer</button>
+      </div>
+    }
+  </div>
+
+  <div class="snake__dpad">
+    <button class="snake__dpad-btn snake__dpad-up" (click)="onSwipe('up')">↑</button>
+    <button class="snake__dpad-btn snake__dpad-left" (click)="onSwipe('left')">←</button>
+    <button class="snake__dpad-btn snake__dpad-right" (click)="onSwipe('right')">→</button>
+    <button class="snake__dpad-btn snake__dpad-down" (click)="onSwipe('down')">↓</button>
+  </div>
+</div>

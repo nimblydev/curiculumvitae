@@ -1,0 +1,25 @@
+<section id="interests" class="section section--alt">
+  <div class="section__container">
+    <h2 class="section__title">Centres d'intérêt</h2>
+
+    <div class="interests-grid">
+      @for (interest of interests; track interest.label) {
+        <div
+          class="interest-card"
+          [class.interest-card--clickable]="!!interest.easterId"
+          (click)="onInterestClick(interest.easterId)"
+          [title]="interest.easterId ? 'Cliquer 3× pour un easter egg 🥚' : ''">
+
+          <span class="interest-card__icon">{{ interest.icon }}</span>
+          <h3 class="interest-card__label">{{ interest.label }}</h3>
+          @if (interest.description) {
+            <p class="interest-card__desc">{{ interest.description }}</p>
+          }
+          @if (interest.easterId) {
+            <span class="interest-card__hint">🥚</span>
+          }
+        </div>
+      }
+    </div>
+  </div>
+</section>

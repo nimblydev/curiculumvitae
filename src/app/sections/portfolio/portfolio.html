@@ -1,0 +1,33 @@
+<div class="portfolio">
+  @if (activeEgg() === 'idle') {
+    <div class="egg-idle" (click)="eggs.dismiss()">
+      <div class="egg-idle__char">💤</div>
+      <p>z z z … (clique pour réveiller)</p>
+    </div>
+  }
+
+  @if (activeEgg() === 'canyoning') {
+    <div class="egg-toast" (click)="eggs.dismiss()">
+      🏔 3× canyoning — on descend ! 🪢
+    </div>
+  }
+
+  @if (activeEgg() === 'jdr') {
+    <div class="egg-toast" (click)="eggs.dismiss()">
+      🎲 Tu lances un dé 20 — résultat : offre d'emploi ! ⚔️
+    </div>
+  }
+
+  <app-hero />
+  <app-experience />
+  <app-skills />
+  <app-education />
+  <app-interests />
+
+  <footer class="portfolio__footer">
+    <p>Fait avec Angular 22 · Signals · Zoneless · Three.js &nbsp;·&nbsp;
+      <a href="https://github.com/nimblydev" target="_blank" rel="noopener">GitHub</a>
+    </p>
+    <p class="portfolio__footer-hint">Psst : essaie le Konami Code ↑↑↓↓←→←→BA 🎮</p>
+  </footer>
+</div>

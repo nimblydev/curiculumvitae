@@ -1,0 +1,21 @@
+<section id="education" class="section">
+  <div class="section__container">
+    <h2 class="section__title">Formation</h2>
+
+    <div class="edu-grid">
+      @for (edu of education; track edu.degree) {
+        <div class="edu-card">
+          <div class="edu-card__year">{{ edu.year }}</div>
+          <div class="edu-card__content">
+            <h3 class="edu-card__degree">{{ edu.degree }}</h3>
+            @if (edu.institution) {
+              <p class="edu-card__institution">{{ edu.institution }}
+                @if (edu.location) { · {{ edu.location }} }
+              </p>
+            }
+          </div>
+        </div>
+      }
+    </div>
+  </div>
+</section>

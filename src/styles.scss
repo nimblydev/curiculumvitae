@@ -1,1 +1,143 @@
-/* You can add global styles to this file, and also import other style files */
+/* =====================================================
+   THEMES
+   ===================================================== */
+
+:root[data-theme="light"] {
+  --bg:             #f6f8fa;
+  --bg-surface:     #ffffff;
+  --bg-elevated:    #eef2f7;
+  --bg-nav:         rgba(246, 248, 250, 0.88);
+  --text:           #111827;
+  --text-muted:     #6b7280;
+  --primary:        #3b82f6;
+  --primary-dark:   #1d4ed8;
+  --accent:         #8b5cf6;
+  --border:         #e2e8f0;
+  --shadow:         0 4px 24px rgba(0,0,0,0.08);
+  --primary-glow:   rgba(59,130,246,0.12);
+  --accent-glow:    rgba(139,92,246,0.08);
+  --font-heading:   'Space Grotesk', sans-serif;
+  --font-body:      'Inter', sans-serif;
+  --font-mono:      'JetBrains Mono', monospace;
+}
+
+:root[data-theme="dark"] {
+  --bg:             #0d1117;
+  --bg-surface:     #161b22;
+  --bg-elevated:    #1c2330;
+  --bg-nav:         rgba(13, 17, 23, 0.88);
+  --text:           #e6edf3;
+  --text-muted:     #8b949e;
+  --primary:        #58a6ff;
+  --primary-dark:   #1f6feb;
+  --accent:         #bc8cff;
+  --border:         #30363d;
+  --shadow:         0 4px 24px rgba(0,0,0,0.4);
+  --primary-glow:   rgba(88,166,255,0.12);
+  --accent-glow:    rgba(188,140,255,0.08);
+  --font-heading:   'Space Grotesk', sans-serif;
+  --font-body:      'Inter', sans-serif;
+  --font-mono:      'JetBrains Mono', monospace;
+}
+
+:root[data-theme="steampunk"] {
+  --bg:             #1a0f07;
+  --bg-surface:     #2b1a0a;
+  --bg-elevated:    #3d2512;
+  --bg-nav:         rgba(26, 15, 7, 0.92);
+  --text:           #e8d5b0;
+  --text-muted:     #b8956a;
+  --primary:        #c8832a;
+  --primary-dark:   #8b5e1a;
+  --accent:         #d4a855;
+  --border:         #5c3d1e;
+  --shadow:         0 4px 24px rgba(0,0,0,0.6);
+  --primary-glow:   rgba(200,131,42,0.2);
+  --accent-glow:    rgba(212,168,85,0.12);
+  --font-heading:   'Cinzel', 'Georgia', serif;
+  --font-body:      'Space Grotesk', sans-serif;
+  --font-mono:      'JetBrains Mono', monospace;
+}
+
+/* =====================================================
+   RESET & BASE
+   ===================================================== */
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+}
+
+body {
+  font-family: var(--font-body);
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+  transition: background 0.3s, color 0.3s;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* =====================================================
+   SECTIONS LAYOUT
+   ===================================================== */
+
+.section {
+  padding: 80px 24px;
+
+  &--alt { background: var(--bg-elevated); }
+
+  &__container {
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  &__title {
+    font-size: clamp(24px, 4vw, 36px);
+    font-weight: 700;
+    font-family: var(--font-heading);
+    color: var(--text);
+    margin-bottom: 40px;
+    position: relative;
+
+    &::after {
+      content: '';
+      display: block;
+      width: 48px;
+      height: 3px;
+      background: linear-gradient(90deg, var(--primary), var(--accent));
+      border-radius: 2px;
+      margin-top: 10px;
+    }
+  }
+}
+
+/* =====================================================
+   STEAMPUNK EXTRAS
+   ===================================================== */
+
+:root[data-theme="steampunk"] {
+  .section__title::before {
+    content: '⚙ ';
+    color: var(--primary);
+    font-size: 0.8em;
+  }
+
+  .hero__name { text-shadow: 2px 2px 8px rgba(200, 131, 42, 0.4); }
+
+  .tag, .skill-tag {
+    border-color: var(--border);
+    font-family: var(--font-mono);
+    font-size: 11px;
+  }
+}
+
+/* =====================================================
+   SCROLLBAR
+   ===================================================== */
+
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: var(--primary); }

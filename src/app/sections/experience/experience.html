@@ -1,0 +1,45 @@
+<section id="experience" class="section">
+  <div class="section__container">
+    <h2 class="section__title">Expérience</h2>
+
+    <div class="timeline">
+      @for (exp of experiences; track exp.id) {
+        <article
+          class="timeline__item"
+          [class.timeline__item--expanded]="isExpanded(exp.id)"
+          (click)="toggle(exp.id)">
+
+          <div class="timeline__dot"></div>
+
+          <div class="timeline__card">
+            <div class="timeline__header">
+              <div class="timeline__meta">
+                <h3 class="timeline__role">{{ exp.role }}</h3>
+                <span class="timeline__company">{{ exp.company }}</span>
+                <span class="timeline__period">{{ exp.period }}</span>
+                @if (exp.location) {
+                  <span class="timeline__location">{{ exp.location }}</span>
+                }
+              </div>
+              <span class="timeline__toggle">{{ isExpanded(exp.id) ? '−' : '+' }}</span>
+            </div>
+
+            @if (isExpanded(exp.id)) {
+              <ul class="timeline__highlights">
+                @for (h of exp.highlights; track h) {
+                  <li>{{ h }}</li>
+                }
+              </ul>
+            }
+
+            <div class="timeline__tags">
+              @for (tag of exp.tags; track tag) {
+                <span class="tag">{{ tag }}</span>
+              }
+            </div>
+          </div>
+        </article>
+      }
+    </div>
+  </div>
+</section>
