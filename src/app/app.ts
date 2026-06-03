@@ -24,6 +24,5 @@ export class App implements OnInit {
 
   ngOnInit(): void {
     this.easterEggs.init();
-    this.cylinder.init();
   }
 }

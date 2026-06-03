@@ -16,7 +16,7 @@ export class CylinderEffectService {
   private rafId = 0;
   private active = false;
 
-  init(): void {
+  constructor() {
     effect(() => {
       if (this.themeService.theme() === 'steampunk') {
         this.start();
