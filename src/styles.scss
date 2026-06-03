@@ -145,6 +145,58 @@ body {
 ::-webkit-scrollbar-thumb:hover { background: var(--primary); }
 
 /* =====================================================
+   STEAMPUNK CYLINDER EFFECT
+   ===================================================== */
+
+:root[data-theme="steampunk"] .portfolio {
+  // Perspective locale — simule la courbure du cylindre
+  transform: perspective(1100px)
+             rotateY(var(--cyl-x, 0deg))
+             rotateX(var(--cyl-y, 0deg));
+  transform-origin: center top;
+  will-change: transform;
+
+  // Vignette pour vendre la courbure des bords
+  &::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background: radial-gradient(
+      ellipse 85% 100% at 50% 45%,
+      transparent 45%,
+      rgba(26, 15, 7, 0.55) 100%
+    );
+    pointer-events: none;
+    z-index: 900;
+  }
+}
+
+// Couche proche — se déplace plus vite (flotte devant le cylindre)
+:root[data-theme="steampunk"] .hero__name,
+:root[data-theme="steampunk"] .hero__title,
+:root[data-theme="steampunk"] .hero__subtitle {
+  display: block;
+  transform:
+    translateX(calc(var(--para-x, 0px) * -1.6))
+    translateY(calc(var(--para-y, 0px) * -1.6));
+}
+
+// Couche medium — avatar, pitch
+:root[data-theme="steampunk"] .hero__avatar,
+:root[data-theme="steampunk"] .hero__pitch {
+  transform:
+    translateX(calc(var(--para-x, 0px) * -0.9))
+    translateY(calc(var(--para-y, 0px) * -0.9));
+}
+
+// Couche lente — titres de sections
+:root[data-theme="steampunk"] .section__title {
+  transform:
+    translateX(calc(var(--para-x, 0px) * -0.5))
+    translateY(calc(var(--para-y, 0px) * -0.5));
+}
+
+/* =====================================================
    PRINT / PDF EXPORT
    ===================================================== */
 
