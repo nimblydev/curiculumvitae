@@ -152,9 +152,9 @@ body {
   transform: perspective(1100px)
              rotateY(var(--cyl-x, 0deg))
              rotateX(var(--cyl-y, 0deg));
-  // Pivot synchronisé avec le scroll — le centre de rotation suit le viewport
   transform-origin: center var(--cyl-origin-y, 0%);
   will-change: transform;
+  clip-path: ellipse(88% 100% at 50% 50%);
 
   // Vignette pour vendre la courbure des bords
   &::after {
