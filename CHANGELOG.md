@@ -4,6 +4,19 @@ Historique des ajouts et corrections du portfolio interactif.
 
 ---
 
+## [0.6.0] — 2026-06-04
+
+### Ajouté
+- **Fond métal cuivre steampunk** — plaques 88×88 px avec rainures, rivets aux intersections et striation diagonale brossée. Dégradé cuivre oxydé en base. Constitue la couche parallax la plus lointaine (×0.12/×0.10), renforçant la sensation de profondeur.
+
+### Modifié
+- **Parallax amplifié** — amplitude globale ×1.75 : rotation cylindre 4°→7° / 1.5°→2.8°, déplacement max 24→52 px / 10→22 px. Multiplicateurs CSS : couche front ×1.6→×2.8, mid ×0.9→×1.5, sections ×0.5→×0.75.
+
+### Corrigé
+- Export PDF : suppression du `page-break-before: always` sur `#skills` qui provoquait un saut de page brutal entre deux sections.
+
+---
+
 ## [0.5.0] — 2026-06-04
 
 ### Ajouté
