@@ -12,6 +12,7 @@ import { CylinderEffectService } from './core/services/cylinder-effect.service';
   template: `
     <router-outlet />
     @if (isSteampunk()) {
+      <div class="st-bg" aria-hidden="true"></div>
       <app-steampunk-cursor />
       <app-steampunk-face-tracker />
     }

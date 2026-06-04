@@ -41,6 +41,7 @@
 }
 
 :root[data-theme="steampunk"] {
+  background: #1a0f07; // fallback html si .st-bg absent
   --bg:             #1a0f07;
   --bg-surface:     #2b1a0a;
   --bg-elevated:    #3d2512;
@@ -171,29 +172,74 @@ body {
   }
 }
 
-// Couche proche — se déplace plus vite (flotte devant le cylindre)
+// Couche proche — nom, titre, sous-titre
 :root[data-theme="steampunk"] .hero__name,
 :root[data-theme="steampunk"] .hero__title,
 :root[data-theme="steampunk"] .hero__subtitle {
   display: block;
   transform:
-    translateX(calc(var(--para-x, 0px) * -1.6))
-    translateY(calc(var(--para-y, 0px) * -1.6));
+    translateX(calc(var(--para-x, 0px) * -2.8))
+    translateY(calc(var(--para-y, 0px) * -2.8));
 }
 
 // Couche medium — avatar, pitch
 :root[data-theme="steampunk"] .hero__avatar,
 :root[data-theme="steampunk"] .hero__pitch {
   transform:
-    translateX(calc(var(--para-x, 0px) * -0.9))
-    translateY(calc(var(--para-y, 0px) * -0.9));
+    translateX(calc(var(--para-x, 0px) * -1.5))
+    translateY(calc(var(--para-y, 0px) * -1.5));
 }
 
 // Couche lente — titres de sections
 :root[data-theme="steampunk"] .section__title {
   transform:
-    translateX(calc(var(--para-x, 0px) * -0.5))
-    translateY(calc(var(--para-y, 0px) * -0.5));
+    translateX(calc(var(--para-x, 0px) * -0.75))
+    translateY(calc(var(--para-y, 0px) * -0.75));
+}
+
+// ── Fond cuivre ───────────────────────────────────────
+// Couche très lente (la plus éloignée)
+:root[data-theme="steampunk"] body {
+  background: transparent;
+}
+
+.st-bg {
+  position: fixed;
+  inset: -120px;         // dépasse largement pour absorber le déplacement max
+  z-index: -1;
+  pointer-events: none;
+  will-change: transform;
+  transform:
+    translateX(calc(var(--para-x, 0px) * -0.12))
+    translateY(calc(var(--para-y, 0px) * -0.10));
+
+  // ── Rivets aux intersections de plaques (toutes les 88px)
+  // ── Reflet elliptique au centre de chaque plaque
+  // ── Rainures horizontales
+  // ── Rainures verticales
+  // ── Striation diagonale (métal brossé)
+  // ── Base cuivre oxydé
+  background:
+    radial-gradient(circle, rgba(220,160,55,.65) 0 3.5px, transparent 3.5px)
+      0 0 / 88px 88px,
+    radial-gradient(ellipse 55% 55% at 44% 42%, rgba(230,150,45,.09) 0%, transparent 68%)
+      0 0 / 88px 88px,
+    repeating-linear-gradient(0deg,
+      transparent 85px,
+      rgba(0,0,0,.55) 85px 87px,
+      rgba(255,170,65,.08) 87px 88px),
+    repeating-linear-gradient(90deg,
+      transparent 85px,
+      rgba(0,0,0,.55) 85px 87px,
+      rgba(255,170,65,.08) 87px 88px),
+    repeating-linear-gradient(-16deg,
+      rgba(255,255,255,.014) 0 1px,
+      transparent 1px 5px),
+    radial-gradient(ellipse 120% 95% at 28% 22%,
+      #c87c32 0%,
+      #96501a 30%,
+      #62300c 62%,
+      #3b1a06 100%);
 }
 
 /* =====================================================
