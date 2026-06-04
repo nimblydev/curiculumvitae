@@ -4,6 +4,17 @@ Historique des ajouts et corrections du portfolio interactif.
 
 ---
 
+## [0.6.1] — 2026-06-04
+
+### Ajouté
+- Skill `/handoff` installée globalement (`~/.claude/skills/handoff/`) — génère un résumé structuré de session (contexte, réalisations, décisions techniques, problèmes, prochaines étapes) et l'écrit dans `.claude/handoffs/`.
+- Répertoire `.claude/handoffs/` versionné dans le dépôt pour conserver l'historique des sessions.
+
+### Corrigé
+- `.claude/settings.local.json` ajouté au `.gitignore` — ce fichier contient des permissions et chemins spécifiques à la machine, il ne doit pas être partagé.
+
+---
+
 ## [0.6.0] — 2026-06-04
 
 ### Ajouté
