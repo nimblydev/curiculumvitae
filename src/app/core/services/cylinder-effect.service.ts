@@ -46,7 +46,7 @@ export class CylinderEffectService {
   }
 
   private readonly onMove = (e: MouseEvent) => {
-    if (this.faceTracking.state() === 'active') return;
+    if (this.faceTracking.state() === 'streaming') return;
     // -1..1 centré sur le milieu de l'écran
     this.targetX = ((e.clientX / window.innerWidth) - 0.5) * 2 * MAX_ROT_X;
     this.targetY = ((e.clientY / window.innerHeight) - 0.5) * -2 * MAX_ROT_Y;
@@ -54,7 +54,7 @@ export class CylinderEffectService {
 
   private readonly tick = () => {
     if (!this.active) return;
-    if (this.faceTracking.state() === 'active') {
+    if (this.faceTracking.state() === 'streaming') {
       this.targetX = this.faceTracking.trackX() * MAX_ROT_X;
       this.targetY = this.faceTracking.trackY() * MAX_ROT_Y;
     }
