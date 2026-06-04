@@ -14,7 +14,7 @@ export interface FaceBox {
 }
 
 // Modèles servis localement depuis assets/ — baseURI gère le sous-chemin GitHub Pages
-const MODEL_URL = () => `${document.baseURI}assets/face-api-models`;
+const MODEL_URL = () => `${document.baseURI}face-api-models`;
 const DETECTION_MS = 100; // ~10 fps de détection, suffisant pour le parallax
 const FACE_OPTIONS = { inputSize: 160 as const, scoreThreshold: 0.4 };
 
