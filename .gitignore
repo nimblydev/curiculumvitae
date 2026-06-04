@@ -31,3 +31,6 @@ Thumbs.db
 
 # Environment
 .env
+
+# Claude Code — settings locaux (chemins machine, permissions personnelles)
+.claude/settings.local.json
