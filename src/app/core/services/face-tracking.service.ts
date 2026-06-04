@@ -13,8 +13,8 @@ export interface FaceBox {
   eyes: EyePoint[];
 }
 
-// Modèles chargés depuis CDN — seulement au premier démarrage
-const MODEL_URL = 'https://cdn.jsdelivr.net/npm/face-api.js@0.22.2/weights';
+// Modèles servis localement depuis assets/ — baseURI gère le sous-chemin GitHub Pages
+const MODEL_URL = () => `${document.baseURI}assets/face-api-models`;
 const DETECTION_MS = 100; // ~10 fps de détection, suffisant pour le parallax
 const FACE_OPTIONS = { inputSize: 160 as const, scoreThreshold: 0.4 };
 
@@ -47,9 +47,10 @@ export class FaceTrackingService {
       this.modelLoading.set(true);
       try {
         const fa = await import('face-api.js');
+        const url = MODEL_URL();
         await Promise.all([
-          fa.nets.tinyFaceDetector.loadFromUri(MODEL_URL),
-          fa.nets.faceLandmark68TinyNet.loadFromUri(MODEL_URL),
+          fa.nets.tinyFaceDetector.loadFromUri(url),
+          fa.nets.faceLandmark68TinyNet.loadFromUri(url),
         ]);
         this.faceApi = fa;
       } catch {
