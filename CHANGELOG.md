@@ -4,15 +4,19 @@ Historique des ajouts et corrections du portfolio interactif.
 
 ---
 
-## [Unreleased] — 2026-06-04
+## [0.5.0] — 2026-06-04
 
 ### Ajouté
-- **Parallax face tracking (Shape Detection API)**
-  Suivi du visage via la caméra frontale (`FaceDetector`, natif Chrome/Edge, sans librairie).
-  Quand actif, la position du visage pilote l'effet cylindrique à la place de la souris.
-  Bouton monocle steampunk fixé en bas à droite — états : idle / requesting / actif (preview vidéo circulaire avec réticule) / refusé.
-  Fallback automatique sur le suivi souris si le tracking est coupé.
-  Invisible sur Firefox/Safari (`FaceDetector` non disponible).
+- **Écran LCD steampunk de suivi facial** — panneau fixe bas-droite avec flux caméra en phosphore vert, scanlines, vignette et crochets de ciblage. Affiche les barres de position X/Y en temps réel.
+- **Détection de visage + yeux via face-api.js** — TinyFaceDetector (~190 KB) + FaceLandmark68TinyNet (~76 KB) chargés en lazy depuis les assets locaux. Fonctionne dans tous les navigateurs (Chrome, Firefox, Safari) sans flag expérimental.
+- **Croix `+` sur les yeux** — 68 landmarks faciaux dont 6 points par œil ; centre de chaque pupille calculé et affiché avec cercle de ciblage + croix en phosphore vert.
+- **Parallax piloté par le visage** — quand le flux est actif, la position du visage remplace la souris pour piloter l'effet cylindrique steampunk. Retour automatique à la souris à l'arrêt.
+- Modèles IA embarqués dans `public/face-api-models/` (~280 KB total) — aucune dépendance CDN externe.
+
+### Corrigé
+- Violation `requestAnimationFrame` 192 ms — boucle canvas démarrée via `setTimeout(0)` hors du cycle d'`effect()` Angular.
+- `FaceDetector` natif (Shape Detection API) retiré — nécessitait un flag Chrome expérimental, inaccessible par défaut.
+- 404 sur les modèles : répertoire `src/assets/` remplacé par `public/` (Angular 17+ assets), URL construite via `document.baseURI` pour compatibilité GitHub Pages.
 
 ---
 
